@@ -35,6 +35,109 @@
           }
         }
       }
+    },
+    "ngx-number-input-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/ngx-number-input-demo",
+      "sourceRoot": "projects/ngx-number-input-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-number-input-demo",
+            "index": "projects/ngx-number-input-demo/src/index.html",
+            "main": "projects/ngx-number-input-demo/src/main.ts",
+            "polyfills": "projects/ngx-number-input-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-number-input-demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ngx-number-input-demo/src/favicon.ico",
+              "projects/ngx-number-input-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-number-input-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-number-input-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-number-input-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-number-input-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "ngx-number-input-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-number-input-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-number-input-demo/src/test.ts",
+            "polyfills": "projects/ngx-number-input-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-number-input-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-number-input-demo/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ngx-number-input-demo/src/favicon.ico",
+              "projects/ngx-number-input-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-number-input-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
   "cli": {
